@@ -1,14 +1,18 @@
 """Console script for marshmallowjson."""
 
 import click
+import sys
 
 
 @click.command()
-def main(args=None):
+@click.argument('schema', type=click.File('r'))
+def main(schema):
     """Console script for marshmallowjson."""
-    click.echo("Replace this message by putting your code into "
-               "marshmallowjson.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
+    click.echo(click.style(
+        'Unknown is not a known type in Type.field',
+        fg='red'
+    ))
+    sys.exit(1)
 
 
 if __name__ == "__main__":
