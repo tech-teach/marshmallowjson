@@ -15,11 +15,23 @@ def unknown():
     return os.path.join(root, 'data/unknown.json')
 
 
+@pytest.fixture
+def basic():
+    root = os.path.dirname(__file__)
+    return os.path.join(root, 'data/basic.json')
+
+
 def test_error_when_using_unknown_type(unknown):
     runner = CliRunner()
     result = runner.invoke(cli.main, [unknown])
     assert result.exit_code == 1
     assert 'Unknown is not a known type in Type.field' in result.output
+
+
+def test_all_basic_types_are_allowed(basic):
+    runner = CliRunner()
+    result = runner.invoke(cli.main, [basic])
+    assert result.exit_code == 0
 
 
 def test_command_line_interface():
