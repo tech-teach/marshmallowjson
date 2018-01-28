@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 """Top-level package for Marshmallow JSON."""
 
 __author__ = """Oscar David Arbeláez"""
