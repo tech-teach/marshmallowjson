@@ -13,8 +13,8 @@ Marshmallow JSON
         :target: https://marshmallowjson.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/odarbelaeze/marshmallowjson/shield.svg
-     :target: https://pyup.io/repos/github/odarbelaeze/marshmallowjson/
+.. image:: https://pyup.io/repos/github/tech-teach/marshmallowjson/shield.svg
+     :target: https://pyup.io/repos/github/tech-teach/marshmallowjson/
      :alt: Updates
 
 

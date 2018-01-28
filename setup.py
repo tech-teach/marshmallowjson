@@ -33,7 +33,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Oscar David Arbeláez",
     author_email='odarbelaeze@gmail.com',
-    url='https://github.com/odarbelaeze/marshmallowjson',
+    url='https://github.com/tech-teach/marshmallowjson',
     packages=find_packages(include=['marshmallowjson']),
     entry_points={
         'console_scripts': [
