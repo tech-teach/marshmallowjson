@@ -6,8 +6,8 @@ Marshmallow JSON
 .. image:: https://img.shields.io/pypi/v/marshmallowjson.svg
         :target: https://pypi.python.org/pypi/marshmallowjson
 
-.. image:: https://img.shields.io/travis/odarbelaeze/marshmallowjson.svg
-        :target: https://travis-ci.org/odarbelaeze/marshmallowjson
+.. image:: https://img.shields.io/travis/tech-teach/marshmallowjson.svg
+        :target: https://travis-ci.org/tech-teach/marshmallowjson
 
 .. image:: https://readthedocs.org/projects/marshmallowjson/badge/?version=latest
         :target: https://marshmallowjson.readthedocs.io/en/latest/?badge=latest
