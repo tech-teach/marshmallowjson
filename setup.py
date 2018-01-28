@@ -18,7 +18,7 @@ requirements = [
 
 setup_requirements = [
     'pytest-runner',
-    # TODO(odarbelaeze): put setup requirements (distutils extensions, etc.) here
+    # TODO(odarbelaeze): setup requirements (distutils extensions, etc.)
 ]
 
 test_requirements = [
@@ -50,13 +50,9 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.6',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
     test_suite='tests',
     tests_require=test_requirements,
