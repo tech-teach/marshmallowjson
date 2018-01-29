@@ -19,7 +19,8 @@ deploy:
   distributions: sdist bdist_wheel
   user: odarbelaeze
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: "WBt+fOQwvdSBHfdAKu+W0ImYZX6PB4Oz8SpnkMSfOauyfxLcUTJ4s11rNkWhPP/gARV1PWJy3a17RBaQVZ4pnUo5/FvSYSvq7XDrWHnBeBCCT6KamO3TAWHtUfHlHMgO+I+3haEvr/CoQ6s5JFXjamkBxXEz9qckja2dLFAaJQQqGZ9mrssdIPj5UwiMDqfru24iiwUKh0viEPgDchyp+KxxWr6B+TFFhDwwy9SjuXsQHWYWaIyFgUXUYsQuB/W++HHsVZwNW4us5aXel1gbic83ENy+mzq3CapfoFYZl3WitDQxpsWK7Wt+pUb+cAam9LqnFEG9gFkxl85KuD4rswcXL/s5C7UWRt607/nuz4roDuOBn6cAzx2XnkfYMFcSWcTsYI7SbggCjfokK+Y4Za0zuHMT8OgKauJYgsxctxUtqNmPs3gmz53g1XD4INOTMrF7uFBwLrp/KZo/jDyJBJe0sAio4sHD/F8sNp4C7/cQ9akhNC8kggUcH+qAqq8yUhNli4C57KczIqkr+zRPU8wZ/oznQOaGkAcB8mwgfOSG+5zkTm2hYsMxBjsAwyXngm8lMnxQp/oIhDT9X55cT05+6UJgD+nquKBxn0wkAMFu+BsTRN0r9DSuUuf+/ILRZg0Js/9D0Ja1jCVixR+MKLvpQ3yo1wGEPkkRtSHw1tM="
+
   on:
     tags: true
     repo: odarbelaeze/marshmallowjson
