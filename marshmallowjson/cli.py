@@ -1,6 +1,7 @@
 """Console script for marshmallowjson."""
 
 import click
+import collections
 import json
 import sys
 
@@ -22,7 +23,7 @@ def fail(kind, type_, name):
 def main(definition):
     """Validate an schema for marshmallow json"""
     known = set('string boolean uuid number integer decimal'.split())
-    definitions = json.load(definition)
+    definitions = json.load(definition, object_pairs_hook=collections.OrderedDict)
     for type_, schema in definitions.items():
         for name, field in schema.items():
             kind = field['kind']
