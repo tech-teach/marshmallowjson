@@ -21,6 +21,12 @@ def basic():
     return os.path.join(root, 'data/basic.json')
 
 
+@pytest.fixture
+def list_schema():
+    root = os.path.dirname(__file__)
+    return os.path.join(root, 'data/list.json')
+
+
 def test_error_when_using_unknown_type(unknown):
     runner = CliRunner()
     result = runner.invoke(cli.main, [unknown])
@@ -31,6 +37,12 @@ def test_error_when_using_unknown_type(unknown):
 def test_all_basic_types_are_allowed(basic):
     runner = CliRunner()
     result = runner.invoke(cli.main, [basic])
+    assert result.exit_code == 0
+
+
+def test_lists_are_allowed(list_schema):
+    runner = CliRunner()
+    result = runner.invoke(cli.main, [list_schema])
     assert result.exit_code == 0
 
 
