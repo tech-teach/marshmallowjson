@@ -1,0 +1,20 @@
+{
+    "StringType": {
+        "field": {
+            "kind": "string",
+            "required": false
+        }
+    },
+    "NumberType": {
+        "field": {
+            "kind": "number",
+            "required": false
+        }
+    },
+    "BooleanType": {
+        "field": {
+            "kind": "boolean",
+            "required": false
+        }
+    }
+}

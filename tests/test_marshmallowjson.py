@@ -1,5 +1,6 @@
 """Tests for `marshmallowjson` package."""
 
+import os
 import pytest
 
 from click.testing import CliRunner
@@ -9,27 +10,45 @@ from marshmallowjson import cli
 
 
 @pytest.fixture
-def response():
-    """Sample pytest fixture.
-
-    See more at: http://doc.pytest.org/en/latest/fixture.html
-    """
-    # import requests
-    # return requests.get('https://github.com/audreyr/cookiecutter-pypackage')
+def unknown():
+    root = os.path.dirname(__file__)
+    return os.path.join(root, 'data/unknown.json')
 
 
-def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+@pytest.fixture
+def basic():
+    root = os.path.dirname(__file__)
+    return os.path.join(root, 'data/basic.json')
+
+
+@pytest.fixture
+def list_schema():
+    root = os.path.dirname(__file__)
+    return os.path.join(root, 'data/list.json')
+
+
+def test_error_when_using_unknown_type(unknown):
+    runner = CliRunner()
+    result = runner.invoke(cli.main, [unknown])
+    assert result.exit_code == 1, result.output
+    assert 'Unknown is not a known type in Type.field' in result.output
+
+
+def test_all_basic_types_are_allowed(basic):
+    runner = CliRunner()
+    result = runner.invoke(cli.main, [basic])
+    assert result.exit_code == 0, result.output
+
+
+def test_lists_are_allowed(list_schema):
+    runner = CliRunner()
+    result = runner.invoke(cli.main, [list_schema])
+    assert result.exit_code == 0, result.output
 
 
 def test_command_line_interface():
     """Test the CLI."""
     runner = CliRunner()
-    result = runner.invoke(cli.main)
-    assert result.exit_code == 0
-    assert 'marshmallowjson.cli.main' in result.output
     help_result = runner.invoke(cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output

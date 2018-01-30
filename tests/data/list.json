@@ -1,0 +1,15 @@
+{
+    "StringType": {
+        "field": {
+            "kind": "string",
+            "required": false
+        }
+    },
+    "ListOfString": {
+        "field": {
+            "kind": "list",
+            "items": "StringType",
+            "required": false
+        }
+    }
+}
