@@ -31,7 +31,7 @@ def test_error_when_using_unknown_type(unknown):
     runner = CliRunner()
     result = runner.invoke(cli.main, [unknown])
     assert result.exit_code == 1, result.output
-    assert 'Unknown is not a known type in Type.field' in result.output
+    assert 'Unknown is not a known kind in Type.field' in result.output
 
 
 def test_all_basic_types_are_allowed(basic):
