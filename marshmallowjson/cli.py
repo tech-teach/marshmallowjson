@@ -5,6 +5,8 @@ import collections
 import json
 import sys
 
+from marshmallowjson import validate
+
 
 def fail(kind, type_, name):
     click.echo(click.style(
@@ -20,8 +22,13 @@ def fail(kind, type_, name):
 
 @click.command()
 @click.argument('definition', type=click.File('r'))
+def click_validate(definition):
+    """Call marshmallowjson validation."""
+    validate(definition)
+
+
 def main(definition):
-    """Validate an schema for marshmallow json"""
+    """Validate an schema for marshmallow json."""
     known = set('string boolean uuid number integer decimal'.split())
     definitions = json.load(definition, object_pairs_hook=collections.OrderedDict)
     for type_, schema in definitions.items():
