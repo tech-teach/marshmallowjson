@@ -19,7 +19,7 @@ deploy:
   user: odarbelaeze
   true:
     python: 3.6
-    repo: odarbelaeze/marshmallowjson
+    repo: tech-teach/marshmallowjson
     tags: true
 install: pip install -U tox-travis
 language: python
