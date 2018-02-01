@@ -3,7 +3,6 @@ import collections
 import itertools
 import inspect
 import json
-import sys
 
 from marshmallow import Schema, fields
 from marshmallow import validate as mr_validate
@@ -76,37 +75,34 @@ def has_valid_args(args, function_name, functions):
 
 def fail_args(args, function):
     """Fail args."""
-    print(
+    raise(TypeError(
         "Args not found: {args} for {function} validator".format(
             args=args,
             function=function
         )
-    )
-    sys.exit(0)
+    ))
 
 
 def fail_field(kind, field, name):
     """Fail field."""
-    print(
+    raise(TypeError(
         '{kind} is not a known kind in {name}.{field}'.format(
             kind=kind,
             field=field,
             name=name
         )
-    )
-    sys.exit(0)
+    ))
 
 
 def fail_validator(kind, field, name):
     """Fail validator."""
-    print(
+    raise(TypeError(
         '{kind} is not a known validator kind in {name}.{field}'.format(
             kind=kind,
             field=field,
             name=name
         )
-    )
-    sys.exit(0)
+    ))
 
 
 def validate(definition):

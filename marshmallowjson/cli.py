@@ -1,48 +1,43 @@
 """Console script for marshmallowjson."""
 
-import click
-import collections
-import json
 import sys
+
+import click
 
 from marshmallowjson import validate
 
 
 def fail(kind, type_, name):
-    click.echo(click.style(
+    """Fail error."""
+    echo_error(
         '{kind} is not a known type in {type_}.{name}'.format(
             kind=kind,
             type_=type_,
             name=name,
-        ),
-        fg='red'
-    ))
+        )
+    )
     sys.exit(1)
+
+
+def echo_error(s):
+    """Echo click error."""
+    click.echo(click.style(s, fg='red'))
+
+
+def echo(s):
+    """Echo click."""
+    click.echo(click.style(s, fg='green'))
 
 
 @click.command()
 @click.argument('definition', type=click.File('r'))
-def click_validate(definition):
-    """Call marshmallowjson validation."""
-    validate(definition)
-
-
 def main(definition):
-    """Validate an schema for marshmallow json."""
-    known = set('string boolean uuid number integer decimal'.split())
-    definitions = json.load(definition, object_pairs_hook=collections.OrderedDict)
-    for type_, schema in definitions.items():
-        for name, field in schema.items():
-            kind = field['kind']
-            if kind == 'list':
-                items = field['items']
-                if items not in known:
-                    fail(items, type_, name)
-                continue
-            if kind not in known:
-                fail(kind, type_, name)
-        known.add(type_)
-    click.echo(click.style('All clear', fg='green'))
+    """Call marshmallowjson validation."""
+    try:
+        validate(definition)
+        echo('All clear')
+    except Exception as e:
+        echo_error(str(e))
 
 
 if __name__ == "__main__":
