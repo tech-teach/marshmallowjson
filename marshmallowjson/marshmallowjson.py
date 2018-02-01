@@ -8,7 +8,7 @@ import sys
 from marshmallow import Schema, fields
 from marshmallow import validate as mr_validate
 
-validators_list = {
+mr_validators = {
     'containsonly': mr_validate.ContainsOnly,
     'email': mr_validate.Email,
     'equal': mr_validate.Equal,
@@ -20,7 +20,7 @@ validators_list = {
     'url': mr_validate.URL,
 }
 
-fields_list = {
+mr_fields = {
     'field': fields.Field,
     'raw': fields.Raw,
     'dict': fields.Dict,
@@ -112,15 +112,15 @@ def fail_validator(kind, field, name):
 def validate(definition):
     """Validate a json definition schema."""
     types = json.load(definition, object_pairs_hook=collections.OrderedDict)
-    known_fields = set(fields_list.keys())
+    known_fields = set(mr_fields.keys())
     for name, definition in types.items():
         for field, schema in definition.items():
             field_kind = schema.get('kind')
             if field_kind not in known_fields:
                 fail_field(field_kind, field, name)
 
-            if field_kind in fields_list.keys():
-                has_valid_args(schema, field_kind, fields_list)
+            if field_kind in mr_fields.keys():
+                has_valid_args(schema, field_kind, mr_fields)
 
             if field_kind == 'list':
                 items = schema.get('cls_or_instance')
@@ -130,9 +130,9 @@ def validate(definition):
             validate = schema.get('validate')
             if validate:
                 validator_kind = validate.get('kind')
-                if validator_kind not in validators_list.keys():
+                if validator_kind not in mr_validators.keys():
                     fail_validator(validator_kind, field, name)
-                has_valid_args(validate, validator_kind, validators_list)
+                has_valid_args(validate, validator_kind, mr_validators)
 
         known_fields.add(name)
     return types
@@ -146,7 +146,7 @@ def build_field(name, schema):
     if validate and validate.get('kind'):
         args = validate.copy()
         args.pop('kind', None)
-        validator = validators_list.get(validate.get('kind'))
+        validator = mr_validators.get(validate.get('kind'))
         field_args['validate'] = validator(**args)
 
     args = schema.copy()
@@ -155,12 +155,12 @@ def build_field(name, schema):
     args.pop('validate', None)
 
     if args.get('cls_or_instance'):
-        args['cls_or_instance'] = fields_list.get(
+        args['cls_or_instance'] = mr_fields.get(
             args.get('cls_or_instance')
         )
 
     field_args.update(args)
-    field = fields_list.get(schema.get('kind'))
+    field = mr_fields.get(schema.get('kind'))
 
     return field(**field_args)
 
@@ -173,11 +173,11 @@ def get_schema_from_dict(definition):
         schemas = dict()
         global_schema[name] = dict()
         for field, schema in definition.items():
-            if schema.get('kind') in fields_list.keys():
+            if schema.get('kind') in mr_fields.keys():
                 schemas[field] = build_field(field, schema)
                 continue
             global_schema[name].update({
-                field: fields_list.get('nested')(
+                field: mr_fields.get('nested')(
                     global_schema[field]
                 )
             })
