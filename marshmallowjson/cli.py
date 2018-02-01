@@ -4,7 +4,7 @@ import sys
 
 import click
 
-from marshmallowjson import validate
+from marshmallowjson.marshmallowjson import validate
 
 
 def fail(kind, type_, name):
