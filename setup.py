@@ -10,6 +10,7 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
+    'marshmallow==2.15.0',
     # TODO: put package requirements here
 ]
 
