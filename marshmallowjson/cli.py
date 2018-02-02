@@ -4,29 +4,13 @@ import sys
 
 import click
 
-from marshmallowjson.marshmallowjson import validate
+from marshmallowjson.marshmallowjson import from_file
+from marshmallowjson.exceptions import ValidationError
 
 
-def fail(kind, type_, name):
-    """Fail error."""
-    echo_error(
-        '{kind} is not a known type in {type_}.{name}'.format(
-            kind=kind,
-            type_=type_,
-            name=name,
-        )
-    )
-    sys.exit(1)
-
-
-def echo_error(s):
-    """Echo click error."""
-    click.echo(click.style(s, fg='red'))
-
-
-def echo(s):
+def echo(s, color='green'):
     """Echo click."""
-    click.echo(click.style(s, fg='green'))
+    click.echo(click.style(s, fg=color))
 
 
 @click.command()
@@ -34,10 +18,10 @@ def echo(s):
 def main(definition):
     """Call marshmallowjson validation."""
     try:
-        validate(definition)
+        from_file(definition)
         echo('All clear')
-    except Exception as e:
-        echo_error(str(e))
+    except ValidationError as e:
+        echo(str(e), color='red')
         sys.exit(1)
 
 
