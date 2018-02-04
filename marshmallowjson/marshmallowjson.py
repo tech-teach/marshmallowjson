@@ -80,6 +80,12 @@ class Definition:
                 field_kind = schema.get('kind')
                 if field_kind == 'list':
                     items = schema.get('items')
+                    if not items:
+                        raise(ValidationError(
+                            'items is not found in {name}.{field}'.format(
+                                name=name, field=field
+                            )
+                        ))
                     if items not in known:
                         fail_field(items, field, name)
                     continue
