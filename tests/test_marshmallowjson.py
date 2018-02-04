@@ -1,26 +1,21 @@
 """Tests for `marshmallowjson` package."""
 
 import pytest
-import json
-import io
 
 from marshmallowjson import marshmallowjson
 
 
 @pytest.fixture
 def email():
-    file_ = io.StringIO()
-    json.dump({
+    schema = {
         'Person': {
             'email': {
                 'kind': 'email',
                 'required': True,
             }
         }
-    }, file_)
-    file_.seek(0)
-    schema = marshmallowjson.from_file(file_)
-    return schema
+    }
+    return marshmallowjson.from_dict(schema)
 
 
 def test_email_field_is_required(email):
