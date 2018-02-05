@@ -4,8 +4,7 @@ import sys
 
 import click
 
-from marshmallowjson.marshmallowjson import Definition
-from marshmallowjson.exceptions import ValidationError
+from marshmallowjson import Definition, ValidationError
 
 
 def echo(s, color='green'):

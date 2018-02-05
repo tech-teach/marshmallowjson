@@ -2,7 +2,7 @@
 
 import pytest
 
-from marshmallowjson.marshmallowjson import Definition
+from marshmallowjson import Definition
 
 
 @pytest.fixture

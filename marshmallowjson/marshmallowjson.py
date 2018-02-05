@@ -3,7 +3,7 @@ import collections
 import json
 
 from marshmallow import Schema, fields
-from marshmallowjson.exceptions import ValidationError
+from marshmallowjson import ValidationError
 
 
 DEFAULT_FIELDS = {
@@ -101,7 +101,10 @@ class Definition:
 
     @classmethod
     def from_file(cls, definition, fields=None):
-        types = json.load(definition, object_pairs_hook=collections.OrderedDict)
+        types = json.load(
+            definition,
+            object_pairs_hook=collections.OrderedDict
+        )
         return cls(fields=fields, types=types)
 
     def top(self):
