@@ -1,7 +1,6 @@
 """Main module."""
 import collections
 import json
-import io
 
 from marshmallow import Schema, fields
 from marshmallowjson.exceptions import ValidationError
@@ -105,6 +104,11 @@ class Definition:
         types = json.load(definition, object_pairs_hook=collections.OrderedDict)
         return cls(fields=fields, types=types)
 
+    @classmethod
+    def from_dict(cls, definition, fields=None):
+        types = collections.OrderedDict(definition.items())
+        return cls(fields=fields, types=types)
+
     def top(self):
         key = next(reversed(self.schemas))
         return self.schemas[key]()
@@ -117,7 +121,4 @@ def from_file(definition):
 
 def from_dict(definition):
     """Build a schema from a dict definition."""
-    file = io.StringIO()
-    json.dump(definition, file)
-    file.seek(0)
-    return from_file(file)
+    return Definition.from_dict(definition).top()
