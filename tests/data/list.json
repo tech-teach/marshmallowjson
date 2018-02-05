@@ -8,7 +8,7 @@
     "ListOfString": {
         "field": {
             "kind": "list",
-            "cls_or_instance": "StringType",
+            "items": "StringType",
             "required": false
         }
     }
