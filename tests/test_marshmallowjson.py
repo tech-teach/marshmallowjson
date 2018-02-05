@@ -2,7 +2,7 @@
 
 import pytest
 
-from marshmallowjson import marshmallowjson
+from marshmallowjson.marshmallowjson import Definition
 
 
 @pytest.fixture
@@ -15,7 +15,7 @@ def email():
             }
         }
     }
-    return marshmallowjson.from_dict(schema)
+    return Definition(schema).top()
 
 
 def test_email_field_is_required(email):

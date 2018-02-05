@@ -4,7 +4,7 @@ import sys
 
 import click
 
-from marshmallowjson.marshmallowjson import from_file
+from marshmallowjson.marshmallowjson import Definition
 from marshmallowjson.exceptions import ValidationError
 
 
@@ -18,7 +18,7 @@ def echo(s, color='green'):
 def main(definition):
     """Call marshmallowjson validation."""
     try:
-        from_file(definition)
+        Definition.from_file(definition)
         echo('All clear')
     except ValidationError as e:
         echo(str(e), color='red')

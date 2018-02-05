@@ -26,17 +26,17 @@ DEFAULT_FIELDS = {
 
 def fail_field(kind, field, name):
     """Fail field."""
-    raise(ValidationError(
+    raise ValidationError(
         '{kind} is not a known kind in {name}.{field}'.format(
             kind=kind,
             field=field,
             name=name
         )
-    ))
+    )
 
 
 class Definition:
-    def __init__(self, fields=None, types=None):
+    def __init__(self, types=None, fields=None):
         self.fields = fields or DEFAULT_FIELDS
         self.schemas = collections.OrderedDict()
         if types is not None:
@@ -104,21 +104,6 @@ class Definition:
         types = json.load(definition, object_pairs_hook=collections.OrderedDict)
         return cls(fields=fields, types=types)
 
-    @classmethod
-    def from_dict(cls, definition, fields=None):
-        types = collections.OrderedDict(definition.items())
-        return cls(fields=fields, types=types)
-
     def top(self):
         key = next(reversed(self.schemas))
         return self.schemas[key]()
-
-
-def from_file(definition):
-    """Build a schema from a json definition."""
-    return Definition.from_file(definition).top()
-
-
-def from_dict(definition):
-    """Build a schema from a dict definition."""
-    return Definition.from_dict(definition).top()
