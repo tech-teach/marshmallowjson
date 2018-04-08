@@ -39,11 +39,13 @@ class Definition:
     def __init__(self, types=None, fields=None):
         self.fields = fields or DEFAULT_FIELDS
         self.schemas = collections.OrderedDict()
+        self.dict_schemas = collections.OrderedDict()
         if types is not None:
             self.import_types(types)
 
     def extend(self, name, definition):
         marshmallow_fields = {}
+        marshmallow_fields_dict = {}
         for field, schema in definition.items():
             kind = schema.get('kind')
             required = schema.get('required', False)
@@ -54,22 +56,39 @@ class Definition:
                         self.fields[items],
                         required=required,
                     )
+                    marshmallow_fields_dict[field] = {
+                        "type": items,
+                        "required": required
+                    }
                 else:
                     marshmallow_fields[field] = fields.Nested(
                         self.schemas[items],
                         required=required,
                         many=True
                     )
+                    marshmallow_fields_dict[field] = {
+                        "fields": self.dict_schemas[items],
+                        "required": required
+                    }
                 continue
             if kind in self.fields:
                 marshmallow_fields[field] = self.fields[kind](
                     required=required
                 )
+                marshmallow_fields_dict[field] = {
+                    "type": kind,
+                    "required": required
+                }
             else:
                 marshmallow_fields[field] = fields.Nested(
                     self.schemas[kind],
                     required=required
                 )
+                marshmallow_fields_dict[field] = {
+                    "fields": self.dict_schemas[kind],
+                    "required": required
+                }
+        self.dict_schemas[name] = marshmallow_fields_dict
         self.schemas[name] = type(name, (Schema,), marshmallow_fields)
 
     def validate(self, types):
@@ -106,6 +125,10 @@ class Definition:
             object_pairs_hook=collections.OrderedDict
         )
         return cls(fields=fields, types=types)
+
+    def to_full_nested(self):
+        key = next(reversed(self.dict_schemas))
+        return self.dict_schemas[key]
 
     def top(self):
         key = next(reversed(self.schemas))
