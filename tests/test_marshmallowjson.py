@@ -1,5 +1,7 @@
 """Tests for `marshmallowjson` package."""
 
+import os
+import json
 import pytest
 
 from marshmallowjson import Definition
@@ -16,6 +18,25 @@ def email():
         }
     }
     return Definition(schema).top()
+
+
+@pytest.fixture
+def lom():
+    root = os.path.dirname(__file__)
+    lom_path = os.path.join(root, 'data/lom.json')
+    lom_file = open(lom_path)
+    return Definition().from_file(lom_file)
+
+
+@pytest.fixture
+def full_nested_lom():
+    root = os.path.dirname(__file__)
+    lom_path = os.path.join(root, 'data/full_nested_lom.json')
+    return json.load(open(lom_path))
+
+
+def test_no_nested_to_full_nested_schema(lom, full_nested_lom):
+    assert lom.to_full_nested() == full_nested_lom
 
 
 def test_email_field_is_required(email):
