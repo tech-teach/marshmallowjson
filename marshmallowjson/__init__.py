@@ -5,4 +5,4 @@ from .marshmallowjson import Definition     # noqa
 
 __author__ = """Oscar David Arbeláez"""
 __email__ = 'odarbelaeze@gmail.com'
-__version__ = '0.2.0'
+__version__ = '0.3.0'
