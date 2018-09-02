@@ -116,7 +116,8 @@
     },
     "technical": {
         "format": {
-            "kind": "string",
+            "kind": "list",
+            "items": "string",
             "required": true
         },
         "size": {

@@ -58,6 +58,7 @@ class Definition:
                     )
                     marshmallow_fields_dict[field] = {
                         "type": items,
+                        "many": True,
                         "required": required
                     }
                 else:
@@ -68,6 +69,7 @@ class Definition:
                     )
                     marshmallow_fields_dict[field] = {
                         "fields": self.dict_schemas[items],
+                        "many": True,
                         "required": required
                     }
                 continue

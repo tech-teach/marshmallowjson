@@ -28,6 +28,7 @@
             },
             "keyword":{
                 "type":"string",
+                "many": true,
                 "required":false
             },
             "coverage":{
@@ -122,6 +123,7 @@
         "fields":{
             "format":{
                 "type":"string",
+                "many": true,
                 "required":true
             },
             "size":{
