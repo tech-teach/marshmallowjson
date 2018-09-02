@@ -10,18 +10,15 @@ with open('HISTORY.rst') as history_file:
 
 requirements = [
     'Click>=6.0',
-    'marshmallow==2.15.0',
-    # TODO: put package requirements here
+    'marshmallow>=2.15.0,<3.0',
 ]
 
 setup_requirements = [
     'pytest-runner',
-    # TODO(odarbelaeze): setup requirements (distutils extensions, etc.)
 ]
 
 test_requirements = [
     'pytest',
-    # TODO: put package test requirements here
 ]
 
 setup(
