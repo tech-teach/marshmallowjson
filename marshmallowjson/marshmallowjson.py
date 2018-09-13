@@ -58,18 +58,15 @@ class Definition:
                     )
                     marshmallow_fields_dict[field] = {
                         "type": items,
-                        "many": True,
                         "required": required
                     }
                 else:
                     marshmallow_fields[field] = fields.Nested(
                         self.schemas[items],
                         required=required,
-                        many=True
                     )
                     marshmallow_fields_dict[field] = {
                         "fields": self.dict_schemas[items],
-                        "many": True,
                         "required": required
                     }
                 continue
