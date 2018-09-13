@@ -8,6 +8,20 @@ from marshmallowjson import Definition
 
 
 @pytest.fixture
+def email_with_choices():
+    schema = {
+        'Person': {
+            'email': {
+                'kind': 'string',
+                'enum': ['email@email.com', 'email.email@email.com'],
+                'required': True,
+            }
+        }
+    }
+    return Definition(schema).top()
+
+
+@pytest.fixture
 def email():
     schema = {
         'Person': {
@@ -37,6 +51,28 @@ def full_nested_lom():
 
 def test_no_nested_to_full_nested_schema(lom, full_nested_lom):
     assert lom.to_full_nested() == full_nested_lom
+
+
+def test_email_in_enum(email_with_choices):
+    data, err = email_with_choices.load({
+        'email': 'email@email.com'
+    })
+    assert not err
+    assert 'email' in data
+
+    data, err = email_with_choices.load({
+        'email': 'email.email@email.com'
+    })
+    assert not err
+    assert 'email' in data
+
+
+def test_email_in_enum_is_required(email_with_choices):
+    data, err = email_with_choices.load({
+        'email': 'liame@liame.com'
+    })
+    assert not data
+    assert 'email' in err
 
 
 def test_email_field_is_required(email):
