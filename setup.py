@@ -23,7 +23,7 @@ test_requirements = [
 
 setup(
     name='marshmallowjson',
-    version='0.4.2',
+    version='0.4.3',
     description="Turns a JSON type definition into a marshmallow validation and serialization toolkit.",
     long_description=readme + '\n\n' + history,
     author="Oscar David Arbeláez",
