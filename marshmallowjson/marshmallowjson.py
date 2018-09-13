@@ -2,7 +2,7 @@
 import collections
 import json
 
-from marshmallow import Schema, fields
+from marshmallow import Schema, fields, validate
 from marshmallowjson import ValidationError
 
 
@@ -74,13 +74,21 @@ class Definition:
                     }
                 continue
             if kind in self.fields:
-                marshmallow_fields[field] = self.fields[kind](
-                    required=required
-                )
                 marshmallow_fields_dict[field] = {
                     "type": kind,
                     "required": required
                 }
+                enum = schema.get('enum')
+                if enum:
+                    marshmallow_fields_dict[field].update({'enum': enum})
+                    marshmallow_fields[field] = self.fields[kind](
+                        required=required,
+                        validate=validate.OneOf(choices=enum)
+                    )
+                else:
+                    marshmallow_fields[field] = self.fields[kind](
+                        required=required
+                    )
             else:
                 marshmallow_fields[field] = fields.Nested(
                     self.schemas[kind],
