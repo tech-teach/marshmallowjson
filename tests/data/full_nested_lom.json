@@ -1,331 +1,354 @@
 {
-    "general":{
-        "fields":{
-            "identifier":{
-                "fields":{
-                    "catalog":{
-                        "type":"string",
-                        "required":true
+    "general": {
+        "fields": {
+            "identifier": {
+                "fields": {
+                    "catalog": {
+                        "type": "string",
+                        "required": false
                     },
-                    "entry":{
-                        "type":"string",
-                        "required":true
+                    "entry": {
+                        "type": "string",
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             },
-            "title":{
-                "type":"string",
-                "required":true
+            "title": {
+                "type": "string",
+                "required": false
             },
-            "language":{
-                "type":"string",
-                "required":true
+            "language": {
+                "type": "string",
+                "required": false
             },
-            "description":{
-                "type":"string",
-                "required":true
+            "description": {
+                "type": "string",
+                "required": false
             },
-            "keyword":{
-                "type":"string",
-                "many": true,
-                "required":false
+            "keyword": {
+                "type": "string",
+                "required": false
             },
-            "coverage":{
-                "type":"string",
-                "required":true
+            "coverage": {
+                "type": "string",
+                "required": false
             },
-            "structure":{
-                "type":"string",
-                "required":true
+            "structure": {
+                "type": "string",
+                "required": true
             },
-            "aggregationlevel":{
-                "type":"string",
-                "required":true
+            "aggregationlevel": {
+                "type": "string",
+                "required": true,
+                "enum": [
+                    "1",
+                    "2",
+                    "3",
+                    "4"
+                ]
             }
         },
-        "required":true
+        "required": false
     },
-    "lifecycle":{
-        "fields":{
-            "version":{
-                "type":"string",
-                "required":true
+    "lifecycle": {
+        "fields": {
+            "version": {
+                "type": "string",
+                "required": false
             },
-            "status":{
-                "type":"string",
-                "required":true
+            "status": {
+                "type": "string",
+                "required": false
             },
-            "contribute":{
-                "fields":{
-                    "role":{
-                        "type":"string",
-                        "required":true
+            "contribute": {
+                "fields": {
+                    "role": {
+                        "type": "string",
+                        "required": false
                     },
-                    "date":{
-                        "type":"string",
-                        "required":true
+                    "date": {
+                        "type": "datetime",
+                        "required": false
                     },
-                    "entity":{
-                        "type":"string",
-                        "required":true
+                    "entity": {
+                        "type": "string",
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "metametadata":{
-        "fields":{
-            "identifier":{
-                "fields":{
-                    "catalog":{
-                        "type":"string",
-                        "required":true
+    "metametadata": {
+        "fields": {
+            "identifier": {
+                "fields": {
+                    "catalog": {
+                        "type": "string",
+                        "required": false
                     },
-                    "entry":{
-                        "type":"string",
-                        "required":true
+                    "entry": {
+                        "type": "string",
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             },
-            "contribute":{
-                "fields":{
-                    "role":{
-                        "type":"string",
-                        "required":true
+            "contribute": {
+                "fields": {
+                    "role": {
+                        "type": "string",
+                        "required": false
                     },
-                    "date":{
-                        "type":"string",
-                        "required":true
+                    "date": {
+                        "type": "datetime",
+                        "required": false
                     },
-                    "entity":{
-                        "type":"string",
-                        "required":true
+                    "entity": {
+                        "type": "string",
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             },
-            "metadataschema":{
-                "type":"string",
-                "required":true
+            "metadataschema": {
+                "type": "string",
+                "required": false
             },
-            "language":{
-                "type":"string",
-                "required":true
+            "language": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "technical":{
-        "fields":{
-            "format":{
-                "type":"string",
-                "many": true,
-                "required":true
+    "technical": {
+        "fields": {
+            "format": {
+                "type": "string",
+                "required": false
             },
-            "size":{
-                "type":"string",
-                "required":true
+            "size": {
+                "type": "string",
+                "required": false
             },
-            "location":{
-                "type":"string",
-                "required":true
+            "location": {
+                "type": "string",
+                "required": false
             },
-            "requirements":{
-                "fields":{
-                    "orcomposite":{
-                        "fields":{
-                            "type":{
-                                "type":"string",
-                                "required":true
+            "requirements": {
+                "fields": {
+                    "orcomposite": {
+                        "fields": {
+                            "type": {
+                                "type": "string",
+                                "required": false
                             },
-                            "name":{
-                                "type":"string",
-                                "required":true
+                            "name": {
+                                "type": "string",
+                                "required": false
                             },
-                            "minimumversion":{
-                                "type":"string",
-                                "required":true
+                            "minimumversion": {
+                                "type": "string",
+                                "required": false
                             },
-                            "maximumversion":{
-                                "type":"string",
-                                "required":true
+                            "maximumversion": {
+                                "type": "string",
+                                "required": false
                             }
                         },
-                        "required":true
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             },
-            "installationremarks":{
-                "type":"string",
-                "required":true
+            "installationremarks": {
+                "type": "string",
+                "required": false
             },
-            "otherplatformrequirements":{
-                "type":"string",
-                "required":true
+            "otherplatformrequirements": {
+                "type": "string",
+                "required": false
             },
-            "duration":{
-                "type":"string",
-                "required":true
+            "duration": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "educational":{
-        "fields":{
-            "interactivitytype":{
-                "type":"string",
-                "required":true
+    "educational": {
+        "fields": {
+            "interactivitytype": {
+                "type": "string",
+                "required": false
             },
-            "learningresourcetype":{
-                "type":"string",
-                "required":true
+            "learningresourcetype": {
+                "type": "string",
+                "required": false
             },
-            "interactivitylevel":{
-                "type":"string",
-                "required":true
+            "interactivitylevel": {
+                "type": "string",
+                "required": false,
+                "enum": [
+                    "active",
+                    "expositive",
+                    "mixed"
+                ]
             },
-            "semanticdensity":{
-                "type":"string",
-                "required":true
+            "semanticdensity": {
+                "type": "string",
+                "required": false,
+                "enum": [
+                    "very low",
+                    "low",
+                    "medium",
+                    "high",
+                    "very high"
+                ]
             },
-            "intendedenduserrole":{
-                "type":"string",
-                "required":true
+            "intendedenduserrole": {
+                "type": "string",
+                "required": false
             },
-            "context":{
-                "type":"string",
-                "required":true
+            "context": {
+                "type": "string",
+                "required": false
             },
-            "typicalagerange":{
-                "type":"string",
-                "required":true
+            "typicalagerange": {
+                "type": "string",
+                "required": false
             },
-            "difficulty":{
-                "type":"string",
-                "required":true
+            "difficulty": {
+                "type": "string",
+                "required": false,
+                "enum": [
+                    "very easy",
+                    "easy",
+                    "medium",
+                    "difficult",
+                    "very difficult"
+                ]
             },
-            "typicallearningtime":{
-                "type":"string",
-                "required":true
+            "typicallearningtime": {
+                "type": "string",
+                "required": false
             },
-            "description":{
-                "type":"string",
-                "required":true
+            "description": {
+                "type": "string",
+                "required": false
             },
-            "language":{
-                "type":"string",
-                "required":true
+            "language": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "rights":{
-        "fields":{
-            "cost":{
-                "type":"string",
-                "required":true
+    "rights": {
+        "fields": {
+            "cost": {
+                "type": "string",
+                "required": false
             },
-            "copyrightandotherrestrictions":{
-                "type":"string",
-                "required":true
+            "copyrightandotherrestrictions": {
+                "type": "string",
+                "required": false
             },
-            "description":{
-                "type":"string",
-                "required":true
+            "description": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "relation":{
-        "fields":{
-            "kind":{
-                "type":"string",
-                "required":true
+    "relation": {
+        "fields": {
+            "kind": {
+                "type": "string",
+                "required": false
             },
-            "resource":{
-                "fields":{
-                    "identifier":{
-                        "fields":{
-                            "catalog":{
-                                "type":"string",
-                                "required":true
+            "resource": {
+                "fields": {
+                    "identifier": {
+                        "fields": {
+                            "catalog": {
+                                "type": "string",
+                                "required": false
                             },
-                            "entry":{
-                                "type":"string",
-                                "required":true
+                            "entry": {
+                                "type": "string",
+                                "required": false
                             }
                         },
-                        "required":true
+                        "required": false
                     },
-                    "description":{
-                        "type":"string",
-                        "required":true
+                    "description": {
+                        "type": "string",
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "annotation":{
-        "fields":{
-            "entity":{
-                "type":"string",
-                "required":true
+    "annotation": {
+        "fields": {
+            "entity": {
+                "type": "string",
+                "required": false
             },
-            "date":{
-                "type":"string",
-                "required":true
+            "date": {
+                "type": "datetime",
+                "required": false
             },
-            "description":{
-                "type":"string",
-                "required":true
+            "description": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     },
-    "classification":{
-        "fields":{
-            "purpose":{
-                "type":"string",
-                "required":true
+    "classification": {
+        "fields": {
+            "purpose": {
+                "type": "string",
+                "required": false
             },
-            "taxonPath":{
-                "fields":{
-                    "source":{
-                        "type":"string",
-                        "required":true
+            "taxonPath": {
+                "fields": {
+                    "source": {
+                        "type": "string",
+                        "required": false
                     },
-                    "taxon":{
-                        "fields":{
-                            "id":{
-                                "type":"string",
-                                "required":true
+                    "taxon": {
+                        "fields": {
+                            "id": {
+                                "type": "string",
+                                "required": false
                             },
-                            "entry":{
-                                "type":"string",
-                                "required":true
+                            "entry": {
+                                "type": "string",
+                                "required": false
                             }
                         },
-                        "required":true
+                        "required": false
                     }
                 },
-                "required":true
+                "required": false
             },
-            "description":{
-                "type":"string",
-                "required":true
+            "description": {
+                "type": "string",
+                "required": false
             },
-            "keyword":{
-                "type":"string",
-                "required":true
+            "keyword": {
+                "type": "string",
+                "required": false
             }
         },
-        "required":true
+        "required": false
     }
 }
