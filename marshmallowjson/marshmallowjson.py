@@ -57,7 +57,7 @@ class Definition:
                         required=required,
                     )
                     marshmallow_fields_dict[field] = {
-                        "type": items,
+                        "type": kind,
                         "required": required
                     }
                 else:
