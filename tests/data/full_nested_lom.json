@@ -19,19 +19,19 @@
                 "required": false
             },
             "language": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "description": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "keyword": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "coverage": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "structure": {
@@ -72,7 +72,7 @@
                         "required": false
                     },
                     "entity": {
-                        "type": "string",
+                        "type": "list",
                         "required": false
                     }
                 },
@@ -107,7 +107,7 @@
                         "required": false
                     },
                     "entity": {
-                        "type": "string",
+                        "type": "list",
                         "required": false
                     }
                 },
@@ -118,7 +118,7 @@
                 "required": false
             },
             "language": {
-                "type": "string",
+                "type": "list",
                 "required": false
             }
         },
@@ -127,7 +127,7 @@
     "technical": {
         "fields": {
             "format": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "size": {
@@ -135,7 +135,7 @@
                 "required": false
             },
             "location": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "requirements": {
@@ -165,11 +165,11 @@
                 "required": false
             },
             "installationremarks": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "otherplatformrequirements": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "duration": {
@@ -186,7 +186,7 @@
                 "required": false
             },
             "learningresourcetype": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "interactivitylevel": {
@@ -210,15 +210,15 @@
                 ]
             },
             "intendedenduserrole": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "context": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "typicalagerange": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "difficulty": {
@@ -237,11 +237,11 @@
                 "required": false
             },
             "description": {
-                "type": "string",
+                "type": "list",
                 "required": false
             },
             "language": {
-                "type": "string",
+                "type": "list",
                 "required": false
             }
         },
@@ -286,7 +286,7 @@
                         "required": false
                     },
                     "description": {
-                        "type": "string",
+                        "type": "list",
                         "required": false
                     }
                 },
@@ -345,7 +345,7 @@
                 "required": false
             },
             "keyword": {
-                "type": "string",
+                "type": "list",
                 "required": false
             }
         },
