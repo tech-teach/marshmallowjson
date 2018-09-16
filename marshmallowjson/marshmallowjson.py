@@ -23,6 +23,17 @@ DEFAULT_FIELDS = {
     'email': fields.Email,
 }
 
+DEFAULT_VALIDATORS = {
+    'containsonly': validate.ContainsOnly,
+    'email': validate.Email,
+    'length': validate.Length,
+    'noneof': validate.NoneOf,
+    'oneof': validate.OneOf,
+    'range': validate.Range,
+    'regexp': validate.Regexp,
+    'url': validate.URL,
+}
+
 
 def fail_field(kind, field, name):
     """Fail field."""
@@ -75,17 +86,33 @@ class Definition:
                     "type": kind,
                     "required": required
                 }
-                enum = schema.get('enum')
-                if enum:
-                    marshmallow_fields_dict[field].update({'enum': enum})
+                validate = schema.get('validate')
+                if kind in DEFAULT_FIELDS and validate:
+                    validator_type = validate.get('type')
+                    validator_params = dict(validate.get('params'))
+                    # TODO: check if params effectively is correct params
+                    # for the selected validator
+                    validator = DEFAULT_VALIDATORS.get(validator_type)
+                    if not validator:
+                        # TODO: raise validator not found
+                        pass
                     marshmallow_fields[field] = self.fields[kind](
                         required=required,
-                        validate=validate.OneOf(choices=enum)
+                        validate=validator(**validator_params)
                     )
-                else:
-                    marshmallow_fields[field] = self.fields[kind](
-                        required=required
-                    )
+                    marshmallow_fields_dict[field].update({
+                        'validate': {
+                            'type': validator_type,
+                            'params': validator_params
+                        }
+                    })
+                    continue
+                elif validate:
+                    # TODO: raise error -"field can not supports validation"
+                    pass
+                marshmallow_fields[field] = self.fields[kind](
+                    required=required
+                )
             else:
                 marshmallow_fields[field] = fields.Nested(
                     self.schemas[kind],
