@@ -41,12 +41,17 @@
             "aggregationlevel": {
                 "type": "string",
                 "required": true,
-                "enum": [
-                    "1",
-                    "2",
-                    "3",
-                    "4"
-                ]
+                "validate": {
+                    "type": "oneof",
+                    "params": {
+                        "choices": [
+                            "1",
+                            "2",
+                            "3",
+                            "4"
+                        ]
+                    }
+                }
             }
         },
         "required": false
@@ -192,22 +197,32 @@
             "interactivitylevel": {
                 "type": "string",
                 "required": false,
-                "enum": [
-                    "active",
-                    "expositive",
-                    "mixed"
-                ]
+                "validate": {
+                    "type": "oneof",
+                    "params": {
+                        "choices": [
+                            "active",
+                            "expositive",
+                            "mixed"
+                        ]
+                    }
+                }
             },
             "semanticdensity": {
                 "type": "string",
                 "required": false,
-                "enum": [
-                    "very low",
-                    "low",
-                    "medium",
-                    "high",
-                    "very high"
-                ]
+                "validate": {
+                    "type": "oneof",
+                    "params": {
+                        "choices": [
+                            "very low",
+                            "low",
+                            "medium",
+                            "high",
+                            "very high"
+                        ]
+                    }
+                }
             },
             "intendedenduserrole": {
                 "type": "list",
@@ -224,13 +239,18 @@
             "difficulty": {
                 "type": "string",
                 "required": false,
-                "enum": [
-                    "very easy",
-                    "easy",
-                    "medium",
-                    "difficult",
-                    "very difficult"
-                ]
+                "validate": {
+                    "type": "oneof",
+                    "params": {
+                        "choices": [
+                            "very easy",
+                            "easy",
+                            "medium",
+                            "difficult",
+                            "very difficult"
+                        ]
+                    }
+                }
             },
             "typicallearningtime": {
                 "type": "string",
