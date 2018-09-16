@@ -13,7 +13,12 @@ def email_with_choices():
         'Person': {
             'email': {
                 'kind': 'string',
-                'enum': ['email@email.com', 'email.email@email.com'],
+                'validate' : {
+                    'type': 'oneof',
+                    'params': {
+                        'choices': ['email@email.com', 'email.email@email.com']
+                    }
+                },
                 'required': True,
             }
         }
